@@ -1,5 +1,6 @@
 package com.example.dropboxtest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 public class LogInActivity extends AppCompatActivity {
 
+    public Context context=this;
     @Override
     protected void onResume() {
         super.onResume();
@@ -37,12 +39,21 @@ public class LogInActivity extends AppCompatActivity {
 
 
 
+
         Button LogIn=findViewById(R.id.button_login);
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DropboxProvider dropboxProvider=new DropboxProvider();
-                dropboxProvider.execute();
+                if(Constants.ACCESS_TOKEN!=""){
+                    //DropboxProvider dropboxProvider=new DropboxProvider(context);
+
+                    Dropbox2Provider dropbox2Provider=new Dropbox2Provider();
+                    dropbox2Provider.uploadString("selam","/apideneme/deneyom.txt");
+                    Intent intent=new Intent(LogInActivity.this,ButtomNavigation_Activity.class);
+                    startActivity(intent);
+
+                }
+
             }
         });
 

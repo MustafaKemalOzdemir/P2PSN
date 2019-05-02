@@ -6,5 +6,9 @@
     <string name="sign_in">Sign In</string>
     <string name="log_in">Log In</string>
     <string name="cloud_dropbox">Select Dropbox</string>
+    <string name="title_activity_buttom_navigation_">ButtomNavigation_Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

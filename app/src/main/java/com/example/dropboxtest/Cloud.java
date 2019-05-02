@@ -14,8 +14,12 @@ import android.widget.Button;
 import com.dropbox.core.android.Auth;
 
 public class Cloud extends AppCompatActivity {
-    public Context Context =this;
+    public Context context =this;
     private boolean DropboxSelected=false;
+
+    public Context getContext(){
+        return context;
+    }
 
 
     @Override
@@ -30,7 +34,7 @@ public class Cloud extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DropboxSelected=true;
-                CloudDropbox cloudDropbox=new CloudDropbox(Context);
+                CloudDropbox cloudDropbox=new CloudDropbox(context);
                 cloudDropbox.DropboxAuthentication();
             }
         });
@@ -60,6 +64,12 @@ public class Cloud extends AppCompatActivity {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putString("DropBox_token",token);
                 editor.apply();
+                AsyncCreateDirectory asyncCreateDirectory=new AsyncCreateDirectory(Constants.Main_File_Path,false,this);
+                asyncCreateDirectory.execute();
+
+                if(sharedPreferences.getBoolean("DropBox_Directory_Created",false)){
+
+                }
 
                 Log.v("DToken",token);
             }
