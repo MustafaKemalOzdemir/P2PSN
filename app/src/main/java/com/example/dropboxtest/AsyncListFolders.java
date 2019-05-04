@@ -4,27 +4,22 @@ import android.os.AsyncTask;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
-import com.dropbox.core.v2.files.Metadata;
 
-public class AsyncCreateDirectory extends AsyncTask<Void, String, String> {
-    private String path;
-    private boolean autoRename;
-    private DbxClientV2 client;
-    public TaskCompleted taskCompleted;
-
-
-    public AsyncCreateDirectory(DbxClientV2 client, String path, boolean autoRename, TaskCompleted taskCompleted){
-        this.path=path;
-        this.autoRename=autoRename;
+public class AsyncListFolders extends AsyncTask<Void,String,String> {
+    DbxClientV2 client;
+    String path;
+    TaskCompleted taskCompleted;
+    public AsyncListFolders(DbxClientV2 client, String path,TaskCompleted taskCompleted){
         this.client=client;
+        this.path=path;
         this.taskCompleted=taskCompleted;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
-        String result= null;
+        String result="";
         try {
-            result = client.files().createFolderV2(path,autoRename).getMetadata().toString();
+            result=client.files().listFolder(path).toString();
         } catch (DbxException e) {
             e.printStackTrace();
         }
@@ -35,5 +30,5 @@ public class AsyncCreateDirectory extends AsyncTask<Void, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         taskCompleted.onTaskComplete(result);
-    }
+}
 }

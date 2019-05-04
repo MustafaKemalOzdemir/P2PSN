@@ -47,8 +47,6 @@ public class LogInActivity extends AppCompatActivity {
                 if(Constants.ACCESS_TOKEN!=""){
                     //DropboxProvider dropboxProvider=new DropboxProvider(context);
 
-                    Dropbox2Provider dropbox2Provider=new Dropbox2Provider();
-                    dropbox2Provider.uploadString("selam","/apideneme/deneyom.txt");
                     Intent intent=new Intent(LogInActivity.this,ButtomNavigation_Activity.class);
                     startActivity(intent);
 

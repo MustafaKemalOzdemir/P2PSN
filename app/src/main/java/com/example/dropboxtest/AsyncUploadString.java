@@ -1,5 +1,6 @@
 package com.example.dropboxtest;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -12,43 +13,46 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AsyncUploadString extends AsyncTask<Void,Metadata,Metadata> {
+public class AsyncUploadString extends AsyncTask<Void,String,String> {
 
 
-    public DbxClientV2 client;
-    public String string;
-    public String path;
+    private DbxClientV2 client;
+    private String string;
+    private String path;
+    private TaskCompleted taskCompleted;
 
-    public AsyncUploadString(DbxClientV2 client,String string,String path){
+    public AsyncUploadString(DbxClientV2 client, String string, String path, TaskCompleted taskCompleted){
         this.client=client;
         this.string=string;
         this.path=path;
+        this.taskCompleted=taskCompleted;
     }
 
 
 
 
     @Override
-    protected Metadata doInBackground(Void... voids) {
+    protected String doInBackground(Void... voids) {
         Log.v("whileTest","started");
         InputStream in=new ByteArrayInputStream(string.getBytes());
-        FileMetadata metadata=null;
+        String string=null;
         try {
-            metadata=client.files().uploadBuilder(path).uploadAndFinish(in);
+            string=client.files().uploadBuilder(path).uploadAndFinish(in).toString();
         } catch (DbxException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.v("whileTest",metadata.toString());
-        return metadata;
+        Log.v("whileTest",string.toString());
+        return string;
     }
 
     @Override
-    protected void onPostExecute(Metadata aMetadata) {
-        super.onPostExecute(aMetadata);
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
         Log.v("whileTest","finished");
-        return;
+        taskCompleted.onTaskComplete(result);
+
 
     }
 

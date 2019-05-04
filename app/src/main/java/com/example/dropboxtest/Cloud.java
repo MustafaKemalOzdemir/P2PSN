@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -64,8 +63,8 @@ public class Cloud extends AppCompatActivity {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putString("DropBox_token",token);
                 editor.apply();
-                AsyncCreateDirectory asyncCreateDirectory=new AsyncCreateDirectory(Constants.Main_File_Path,false,this);
-                asyncCreateDirectory.execute();
+                AsyncCreateDirectoryOld asyncCreateDirectoryOld =new AsyncCreateDirectoryOld(Constants.Main_File_Path,false,this);
+                asyncCreateDirectoryOld.execute();
 
                 if(sharedPreferences.getBoolean("DropBox_Directory_Created",false)){
 
