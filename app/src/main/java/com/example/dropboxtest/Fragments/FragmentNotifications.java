@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,13 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.dropboxtest.ApplicationProvider;
+import com.example.dropboxtest.Dropbox2Provider;
+import com.example.dropboxtest.R;
+
 public class FragmentNotifications extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        Dropbox2Provider dropbox2Provider=new Dropbox2Provider(v.getContext());
+        final ApplicationProvider applicationProvider=new ApplicationProvider(v.getContext());
+        final Dropbox2Provider dropbox2Provider=new Dropbox2Provider(v.getContext());
 
         final EditText editText=v.findViewById(R.id.editText);
         Button ListFolders=v.findViewById(R.id.buttonListFolders);
@@ -33,7 +38,7 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 String email=editText.getText().toString();
-                Log.v("TestV2",email);
+                applicationProvider.addFriend(email);
             }
         });
         Button CreateFolder=v.findViewById(R.id.buttonCreateFolder);
@@ -56,8 +61,8 @@ public class FragmentNotifications extends Fragment {
         ShareFolder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email=editText.getText().toString();
-                Log.v("TestV2",email);
+                String path=editText.getText().toString();
+                dropbox2Provider.shareFolder(path,null);
             }
         });
         return v;

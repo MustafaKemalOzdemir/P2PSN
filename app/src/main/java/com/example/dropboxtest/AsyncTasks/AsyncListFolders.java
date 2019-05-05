@@ -1,9 +1,10 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.os.AsyncTask;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
+import com.example.dropboxtest.TaskCompleted;
 
 public class AsyncListFolders extends AsyncTask<Void,String,String> {
     DbxClientV2 client;

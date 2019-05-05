@@ -5,7 +5,15 @@ import android.util.Log;
 
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
-import com.dropbox.core.v2.files.Metadata;
+import com.example.dropboxtest.AsyncTasks.AsyncAddFolderMember;
+import com.example.dropboxtest.AsyncTasks.AsyncCreateDirectory;
+import com.example.dropboxtest.AsyncTasks.AsyncListFolders;
+import com.example.dropboxtest.AsyncTasks.AsyncShareFolder;
+import com.example.dropboxtest.AsyncTasks.AsyncUploadString;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Dropbox2Provider{
@@ -49,6 +57,32 @@ public class Dropbox2Provider{
         });
         asyncListFolders.execute();
     }
+    public void shareFolder(String path, final Friend friend){
+
+        AsyncShareFolder asyncShareFolder=new AsyncShareFolder(client, path, new TaskCompleted() {
+            //Error There
+            @Override
+            public void onTaskComplete(String result) {
+                try {
+                    JSONObject jsonObject=new JSONObject(result);
+                    String sharedFolderId=jsonObject.getString("shared_folder_id");
+                    friend.setFolderId(sharedFolderId);
+                    Log.v("addFriend","folderid= "+friend.getFolderId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Log.v("TaskTest4",result);
+            }
+        },context);
+        asyncShareFolder.execute();
+    }
+    public void addFolderMember(String folderId,String eMail){
+        AsyncAddFolderMember asyncAddFolderMember=new AsyncAddFolderMember(client,folderId,eMail);
+        asyncAddFolderMember.execute();
+
+    }
+
+
 
 
 }

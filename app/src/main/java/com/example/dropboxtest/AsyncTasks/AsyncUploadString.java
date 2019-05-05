@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -8,6 +8,7 @@ import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.FileMetadata;
 import com.dropbox.core.v2.files.Metadata;
+import com.example.dropboxtest.TaskCompleted;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -33,7 +34,6 @@ public class AsyncUploadString extends AsyncTask<Void,String,String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        Log.v("whileTest","started");
         InputStream in=new ByteArrayInputStream(string.getBytes());
         String string=null;
         try {
@@ -43,14 +43,12 @@ public class AsyncUploadString extends AsyncTask<Void,String,String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.v("whileTest",string.toString());
         return string;
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        Log.v("whileTest","finished");
         taskCompleted.onTaskComplete(result);
 
 

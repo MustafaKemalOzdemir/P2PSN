@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.dropboxtest.R;
 
 public class FragmentAddFriend extends Fragment {
     @Nullable
