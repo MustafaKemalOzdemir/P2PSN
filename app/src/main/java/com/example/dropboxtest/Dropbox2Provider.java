@@ -57,20 +57,15 @@ public class Dropbox2Provider{
         });
         asyncListFolders.execute();
     }
-    public void shareFolder(String path, final Friend friend){
+    public void shareFolder(String path){
 
         AsyncShareFolder asyncShareFolder=new AsyncShareFolder(client, path, new TaskCompleted() {
             //Error There
             @Override
             public void onTaskComplete(String result) {
-                try {
-                    JSONObject jsonObject=new JSONObject(result);
-                    String sharedFolderId=jsonObject.getString("shared_folder_id");
-                    friend.setFolderId(sharedFolderId);
-                    Log.v("addFriend","folderid= "+friend.getFolderId());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                Log.v("addFriend","result");
+
+
                 Log.v("TaskTest4",result);
             }
         },context);

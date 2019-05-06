@@ -4,7 +4,7 @@ public class Friend {
     private String Name;
     private String eMail;
     private String folderPath;
-    private String folderId=null;
+    private String folderId="";
 
     public String getName() {
         return Name;

@@ -27,6 +27,7 @@ public class AsyncShareFolder extends AsyncTask<Void, String,String> {
     }
     @Override
     protected String doInBackground(Void... voids) {
+        Log.v("addFriend","share in background");
             String response="";
             try {
                 response=client.sharing().shareFolderBuilder(path).start().toString();
@@ -52,12 +53,14 @@ public class AsyncShareFolder extends AsyncTask<Void, String,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        Log.v("addFriend","on post");
         if(s.equals("badPath")){
             Toast.makeText(context,"Bad Path",Toast.LENGTH_SHORT).show();
         }else if(s.equals("error")){
             Toast.makeText(context,"Unknown Error",Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context,"Success",Toast.LENGTH_SHORT).show();
+            Log.v("addFriend","Success");
         }
         taskCompleted.onTaskComplete(s);
     }

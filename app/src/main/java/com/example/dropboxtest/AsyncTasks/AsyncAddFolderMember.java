@@ -36,6 +36,7 @@ public class AsyncAddFolderMember extends AsyncTask<Void,String,String> {
             List<AddMember> array=new ArrayList<>();
             AddMember member= new AddMember(MemberSelector.email(eMail),AccessLevel.EDITOR);
             array.add(member);
+            Log.v("folderID","folderid="+folderId);
             client.sharing().addFolderMember(folderId,array);
 
 
