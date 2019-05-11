@@ -31,14 +31,12 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
     String path;
     Context context;
     String eMail;
-    String string;
     Friend friend;
-    public AsyncAddFriend(DbxClientV2 client,Context context,String path,String eMail,String string,Friend friend){
+    public AsyncAddFriend(DbxClientV2 client,Context context,String path,String eMail,Friend friend){
         this.client=client;
         this.context=context;
         this.path=path;
         this.eMail=eMail;
-        this.string=string;
         this.friend=friend;
     }
     @Override
@@ -84,8 +82,9 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
 
         }
         try {
-            InputStream in=new ByteArrayInputStream(string.getBytes());
-            string=client.files().uploadBuilder(path+"/naber.txt").uploadAndFinish(in).toString();
+
+            InputStream in=new ByteArrayInputStream(Constants.GetFriendTemplate().getBytes());
+            client.files().uploadBuilder(path+"/messages.txt").uploadAndFinish(in).toString();
         } catch (DbxException e) {
             e.printStackTrace();
         } catch (IOException e) {

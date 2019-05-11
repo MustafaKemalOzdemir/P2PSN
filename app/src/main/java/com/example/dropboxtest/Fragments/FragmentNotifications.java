@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.AsyncAddFriend;
+import com.example.dropboxtest.Constants;
 import com.example.dropboxtest.Dropbox2Provider;
 import com.example.dropboxtest.Friend;
 import com.example.dropboxtest.R;
@@ -58,7 +59,6 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 String email=editText.getText().toString();
-                Log.v("TestV2",email);
             }
         });
         Button ShareFolder=v.findViewById(R.id.buttonShareFolder);
@@ -66,7 +66,7 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 String path=editText.getText().toString();
-                dropbox2Provider.shareFolder(path);
+                applicationProvider.sendMessage("/Apps/P2PSN/Friends/User_kemal.ozdemir@agu.edu.tr/messages.txt",path);
             }
         });
         return v;
