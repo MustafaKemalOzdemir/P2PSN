@@ -19,7 +19,7 @@ import com.example.dropboxtest.Friend;
 import com.example.dropboxtest.R;
 
 public class FragmentNotifications extends Fragment {
-    static Friend friend=new Friend();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 String email=editText.getText().toString();
-                applicationProvider.addFriend2(email,friend);
+                applicationProvider.addFriend2(email);
             }
         });
         Button UploadString=v.findViewById(R.id.buttonUploadString);
