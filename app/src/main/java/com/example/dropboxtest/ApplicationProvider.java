@@ -41,7 +41,7 @@ public class ApplicationProvider {
 
     }
     public void addFriend2(final String email){
-        String path=Constants.Friends_Folder_Path+"/User_"+email;
+        String path=Constants.Friends_Folder_Path;
         AsyncAddFriend asyncAddFriend=new AsyncAddFriend(client,context,path,email);
         asyncAddFriend.execute();
 

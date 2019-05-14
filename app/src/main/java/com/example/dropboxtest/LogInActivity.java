@@ -68,8 +68,8 @@ public class LogInActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LogInActivity.this, AddData.class);
-                startActivity(intent);
+               // Intent intent=new Intent(LogInActivity.this, AddData.class);
+                //startActivity(intent);
             }
         });
     }

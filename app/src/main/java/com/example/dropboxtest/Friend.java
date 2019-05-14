@@ -5,7 +5,7 @@ public class Friend {
     private String eMail;
     private String accountId;
     private String folderPath;
-    private String folderId="";
+    private String folderId;
     private String ppPath;
 
 
@@ -52,7 +52,7 @@ public class Friend {
         return folderId;
     }
 
-    public void setFolderId(String fileId) {
-        this.folderId = fileId;
+    public void setFolderId(String folderId) {
+        this.folderId = folderId;
     }
 }
