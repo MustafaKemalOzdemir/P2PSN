@@ -52,7 +52,7 @@
             android:name=".ButtomNavigation_Activity"
             android:label="@string/title_activity_buttom_navigation_" />
         <activity
-            android:name=".Messanger"
+            android:name=".Messenger"
             android:label="@string/title_activity_messanger"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

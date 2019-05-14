@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,8 +14,7 @@ import com.example.dropboxtest.Fragments.FragmentHome;
 import com.example.dropboxtest.Fragments.FragmentNotifications;
 
 public class ButtomNavigation_Activity extends AppCompatActivity {
-
-
+    ApplicationProvider applicationProvider=new ApplicationProvider(this);
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,7 +52,9 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.sendMessage) {
-            Intent intent=new Intent(ButtomNavigation_Activity.this,Messanger.class);
+
+            applicationProvider.updateFriends();
+            Intent intent=new Intent(ButtomNavigation_Activity.this,Messenger.class);
             startActivity(intent);
 
             return true;
@@ -71,6 +71,7 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentHome()).commit();
+        applicationProvider.updateFriends();
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);

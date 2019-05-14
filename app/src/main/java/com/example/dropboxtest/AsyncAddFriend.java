@@ -99,11 +99,11 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
                         for(int i=0;i<friendList.length();i++){
                             friend=new Friend();
                             JSONObject friendElement=friendList.getJSONObject(i);
-                            friend.seteMail(friendElement.get("E-Mail").toString());
-                            friend.setFolderId(friendElement.get("Folder-Id").toString());
-                            friend.setFolderPath(friendElement.get("Folder-Path").toString());
-                            friend.setName(friendElement.get("Name").toString());
-                            friend.setAccountId(friendElement.getString("Account-Id").toString());
+                            friend.seteMail(friendElement.getString("E-Mail"));
+                            friend.setFolderId(friendElement.getString("Folder-Id"));
+                            friend.setFolderPath(friendElement.getString("Folder-Path"));
+                            friend.setName(friendElement.getString("Name"));
+                            friend.setAccountId(friendElement.getString("Account-Id"));
                             //friend.setPpPath(friendElement.get("Pp-Path").toString());
                             mFriends.add(friend);
                             Log.v("AddFriendAsync", mFriends.size()+"=size");

@@ -50,5 +50,9 @@ public class ApplicationProvider {
         AsyncSendMessage asyncSendMessage=new AsyncSendMessage(client,path,message);
         asyncSendMessage.execute();
     }
+    public void updateFriends(){
+        AsyncUpdateFriends asyncUpdateFriends=new AsyncUpdateFriends(client);
+        asyncUpdateFriends.execute();
+    }
 
 }
