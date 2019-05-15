@@ -33,6 +33,8 @@ public class AsyncUpdateFriends extends AsyncTask<Void,Void,Void> {
         try {
             InputStream in;
             in=client.files().downloadBuilder(Constants.Personal_Friends_Folder_path).start().getInputStream();
+            Constants.User=client.users().getCurrentAccount().getName().getDisplayName();
+            Log.v("getname",Constants.User);
             BufferedReader r = new BufferedReader(new InputStreamReader(in));
             builderResult = new StringBuilder();
             for (String line; (line = r.readLine()) != null; ) {

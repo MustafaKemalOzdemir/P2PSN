@@ -56,5 +56,13 @@ public class ApplicationProvider {
         AsyncUpdateFriends asyncUpdateFriends=new AsyncUpdateFriends(client);
         asyncUpdateFriends.execute();
     }
+    public void updateMessages(String path,ArrayList<MessageSample> messageSamples){
+        AsyncUpdateMessages asyncUpdateMessages=new AsyncUpdateMessages(client,path,messageSamples);
+        asyncUpdateMessages.execute();
+    }
+    public void syncFriends(){
+        AsyncSyncFriends asyncSyncFriends=new AsyncSyncFriends(client);
+        asyncSyncFriends.execute();
+    }
 
 }

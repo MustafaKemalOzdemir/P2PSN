@@ -24,6 +24,7 @@ public class LogInActivity extends AppCompatActivity {
         String token=sharedPreferences.getString("DropBox_token","");
         if(!token.equals("")){
             Constants.ACCESS_TOKEN=token;
+            Log.v("access token",token);
         } else{
 
             Toast.makeText(getApplicationContext(),"You must sign up",Toast.LENGTH_LONG).show();

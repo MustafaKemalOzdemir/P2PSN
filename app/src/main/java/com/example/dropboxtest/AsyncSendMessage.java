@@ -79,9 +79,6 @@ public class AsyncSendMessage extends AsyncTask <Void, String,String> {
             sampleArrayList.clear();
             for(int i=0;i<jsonArray.length();i++){
 
-                //Date date=new Date(Long.getLong(jsonArray.getJSONObject(i).getString("time")));
-                //Format format=new SimpleDateFormat("MM dd HH:mm:ss", Locale.ENGLISH);
-                //format.format(date)
 
                 MessageSample messageSample=new MessageSample(jsonArray.getJSONObject(i).getString("message"),jsonArray.getJSONObject(i).getString("time"),jsonArray.getJSONObject(i).getString("sender"));
                 sampleArrayList.add(messageSample);
