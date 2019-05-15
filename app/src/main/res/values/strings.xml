@@ -11,5 +11,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_messanger">Messanger</string>
+    <string name="title_activity_message">MessageActivity</string>
 
 </resources>

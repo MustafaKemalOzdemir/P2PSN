@@ -1,5 +1,6 @@
 package com.example.dropboxtest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -53,6 +54,9 @@ public class Messenger extends AppCompatActivity implements OnItemClickListener{
     @Override
     public void onListItemClick(int clickedItemIndex) {
         Log.v("rvtest",Constants.arrayFriends.get(clickedItemIndex).getName());
+        Intent intent=new Intent(Messenger.this,MessageActivity.class);
+        intent.putExtra("receiver",clickedItemIndex);
+        startActivity(intent);
 
     }
 }
