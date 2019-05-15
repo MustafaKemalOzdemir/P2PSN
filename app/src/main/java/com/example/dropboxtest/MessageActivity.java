@@ -12,9 +12,13 @@ import android.view.View;
 import android.widget.EditText;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MessageActivity extends AppCompatActivity {
     private ApplicationProvider applicationProvider=new ApplicationProvider(this);
+    static MessageAdapter messageAdapter;
+    static RecyclerView recyclerView;
+    static ArrayList<MessageSample> messageSampleArrayList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +30,33 @@ public class MessageActivity extends AppCompatActivity {
         int index=intent.getExtras().getInt("receiver");
         final Friend friend=Constants.arrayFriends.get(index);
         final EditText editText=findViewById(R.id.sendMessageEditText);
-        ArrayList<MessageSample> messageSampleArrayList=new ArrayList<>();
 
-        RecyclerView recyclerView=findViewById(R.id.messageRecycler);
-        MessageAdapter messageAdapter=new MessageAdapter(messageSampleArrayList);
+
+        recyclerView=findViewById(R.id.messageRecycler);
+        messageAdapter=new MessageAdapter(messageSampleArrayList);
         recyclerView.setAdapter(messageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        FloatingActionButton sendButton = (FloatingActionButton) findViewById(R.id.fab);
+
+        FloatingActionButton sendButton = findViewById(R.id.fab);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String message=editText.getText().toString();
-                applicationProvider.sendMessage(friend.getFolderPath()+"/messages.txt",message);
+                String time=Calendar.getInstance().getTime().getTime()+"";
+                applicationProvider.sendMessage(friend.getFolderPath()+"/messages.txt",message,Constants.User,time,messageSampleArrayList);
+
                 editText.getText().clear();
 
             }
         });
+    }
+    public static void notifyAdapter(){
+
+        messageAdapter.notifyDataSetChanged();
+        recyclerView.scrollToPosition(messageSampleArrayList.size()-1);
+
     }
 
 }

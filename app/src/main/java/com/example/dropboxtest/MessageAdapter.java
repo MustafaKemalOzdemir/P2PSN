@@ -7,7 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder>{
@@ -31,7 +35,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageViewHolder>{
     public void onBindViewHolder(@NonNull MessageViewHolder messageViewHolder, int i) {
         messageViewHolder.messageText.setText(messageSamples.get(i).getMessageText());
         messageViewHolder.name.setText(messageSamples.get(i).getName());
-        messageViewHolder.time.setText(messageSamples.get(i).getTime());
+        Date date=new Date(Long.parseLong(messageSamples.get(i).getTime()));
+        Format format=new SimpleDateFormat("MM dd - HH:mm", Locale.ENGLISH);
+
+        messageViewHolder.time.setText(format.format(date));
 
     }
 

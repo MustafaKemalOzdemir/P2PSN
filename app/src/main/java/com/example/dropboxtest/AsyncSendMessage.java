@@ -22,16 +22,27 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class AsyncSendMessage extends AsyncTask <Void, String,String> {
     DbxClientV2 client;
     String path;
     String message;
+    String sender;
+    String time;
+    ArrayList<MessageSample> sampleArrayList;
 
-    public AsyncSendMessage(DbxClientV2 client,String path,String message){
+    public AsyncSendMessage(DbxClientV2 client,String path,String message,String sender,String time,ArrayList<MessageSample> sampleArrayList){
         this.client=client;
         this.path=path;
         this.message=message;
+        this.sender=sender;
+        this.time=time;
+        this.sampleArrayList=sampleArrayList;
 
     }
 
@@ -61,12 +72,30 @@ public class AsyncSendMessage extends AsyncTask <Void, String,String> {
             JSONArray jsonArray=jsonObject.getJSONArray("messages");
             JSONObject messageObject=new JSONObject();
             messageObject.put("message",message);
+            messageObject.put("sender",sender);
+            messageObject.put("time",time);
             jsonArray.put(messageObject);
+
+            sampleArrayList.clear();
+            for(int i=0;i<jsonArray.length();i++){
+
+                //Date date=new Date(Long.getLong(jsonArray.getJSONObject(i).getString("time")));
+                //Format format=new SimpleDateFormat("MM dd HH:mm:ss", Locale.ENGLISH);
+                //format.format(date)
+
+                MessageSample messageSample=new MessageSample(jsonArray.getJSONObject(i).getString("message"),jsonArray.getJSONObject(i).getString("time"),jsonArray.getJSONObject(i).getString("sender"));
+                sampleArrayList.add(messageSample);
+            }
+
             Log.v("asyncDownload",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
+
         String json=jsonObject.toString();
         InputStream byteArrayInputStream=new ByteArrayInputStream(json.getBytes());
 
@@ -80,5 +109,11 @@ public class AsyncSendMessage extends AsyncTask <Void, String,String> {
 
 
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        MessageActivity.notifyAdapter();
     }
 }

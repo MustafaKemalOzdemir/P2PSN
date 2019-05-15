@@ -12,6 +12,7 @@ public class Constants {
    public static String Friends_Folder_Path="/Apps/P2PSN/Friends";
    public static String Personal_Folder_path="/Apps/P2PSN/Personal";
    public static String Personal_Friends_Folder_path="/Apps/P2PSN/Personal/Friends.txt";
+   public static String User="Mustafa Kemal";
 
    public static ArrayList<Friend> arrayFriends=new ArrayList<>();
 

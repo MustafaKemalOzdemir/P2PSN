@@ -11,6 +11,8 @@ import com.example.dropboxtest.AsyncTasks.AsyncShareFolder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ApplicationProvider {
     private Dropbox2Provider dropbox2Provider;
 
@@ -46,8 +48,8 @@ public class ApplicationProvider {
         asyncAddFriend.execute();
 
     }
-    public void sendMessage(String path, String message){
-        AsyncSendMessage asyncSendMessage=new AsyncSendMessage(client,path,message);
+    public void sendMessage(String path, String message, String sender, String time, ArrayList<MessageSample> messageSamples){
+        AsyncSendMessage asyncSendMessage=new AsyncSendMessage(client,path,message,sender,time,messageSamples);
         asyncSendMessage.execute();
     }
     public void updateFriends(){

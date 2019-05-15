@@ -66,7 +66,7 @@ public class FragmentNotifications extends Fragment {
             @Override
             public void onClick(View v) {
                 String path=editText.getText().toString();
-                applicationProvider.sendMessage("/Apps/P2PSN/Friends/User_kemal.ozdemir@agu.edu.tr/messages.txt",path);
+               // applicationProvider.sendMessage("/Apps/P2PSN/Friends/User_kemal.ozdemir@agu.edu.tr/messages.txt",path);
             }
         });
         return v;
