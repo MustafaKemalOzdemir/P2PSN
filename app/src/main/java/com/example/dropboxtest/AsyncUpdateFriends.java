@@ -1,11 +1,14 @@
 package com.example.dropboxtest;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.DownloadErrorException;
+import com.dropbox.core.v2.files.ListFolderErrorException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,10 +23,24 @@ import java.util.List;
 
 public class AsyncUpdateFriends extends AsyncTask<Void,Void,Void> {
     private DbxClientV2 client;
+    private Context context;
+    private ProgressDialog progressDialog;
 
 
-    public AsyncUpdateFriends(DbxClientV2 client){
+    public AsyncUpdateFriends(DbxClientV2 client,Context context){
         this.client=client;
+        this.context=context;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog=new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please Wait");
+        progressDialog.setTitle("Fetching Friends");
+        progressDialog.show();
+
     }
 
 
@@ -77,5 +94,11 @@ public class AsyncUpdateFriends extends AsyncTask<Void,Void,Void> {
 
 
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        progressDialog.dismiss();
     }
 }

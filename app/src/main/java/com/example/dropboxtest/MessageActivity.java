@@ -2,6 +2,7 @@ package com.example.dropboxtest;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,31 @@ public class MessageActivity extends AppCompatActivity {
     static MessageAdapter messageAdapter;
     static RecyclerView recyclerView;
     static ArrayList<MessageSample> messageSampleArrayList=new ArrayList<>();
+    int index;
+    Friend friend;
 
+    Handler handler;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacksAndMessages(null);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handler = new Handler();
+        final int delay = 3000; //milliseconds
+
+        handler.postDelayed(new Runnable(){
+            public void run(){
+                applicationProvider.updateMessages(friend.getFolderPath()+"/messages.txt",messageSampleArrayList);
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +52,8 @@ public class MessageActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent intent=getIntent();
-        int index=intent.getExtras().getInt("receiver");
-        final Friend friend=Constants.arrayFriends.get(index);
+        index=intent.getExtras().getInt("receiver");
+        friend=Constants.arrayFriends.get(index);
         final EditText editText=findViewById(R.id.sendMessageEditText);
         applicationProvider.updateMessages(friend.getFolderPath()+"/messages.txt",messageSampleArrayList);
 

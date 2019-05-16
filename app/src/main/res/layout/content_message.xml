@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/sendMessageEditText"
+        android:layout_above="@+id/sendMessageEditText"
 
         />
 

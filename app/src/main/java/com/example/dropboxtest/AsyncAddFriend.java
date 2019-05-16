@@ -1,5 +1,6 @@
 package com.example.dropboxtest;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -40,6 +41,7 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
     private Context context;
     private String eMail;
     private Friend newFriend;
+    ProgressDialog progressDialog;
 
     public AsyncAddFriend(DbxClientV2 client,Context context,String path,String eMail){
         this.client=client;
@@ -48,6 +50,18 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
         this.eMail=eMail;
         newFriend=new Friend();
     }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog=new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please Wait");
+        progressDialog.setTitle("Adding");
+        progressDialog.show();
+
+    }
+
     @Override
     protected String doInBackground(Void... voids) {
         Log.v("addFriend","Started AsyncAddFriend");
@@ -291,4 +305,11 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
 
         return null;
     }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        progressDialog.dismiss();
+    }
 }
+

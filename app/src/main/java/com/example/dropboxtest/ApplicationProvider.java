@@ -53,7 +53,7 @@ public class ApplicationProvider {
         asyncSendMessage.execute();
     }
     public void updateFriends(){
-        AsyncUpdateFriends asyncUpdateFriends=new AsyncUpdateFriends(client);
+        AsyncUpdateFriends asyncUpdateFriends=new AsyncUpdateFriends(client,context);
         asyncUpdateFriends.execute();
     }
     public void updateMessages(String path,ArrayList<MessageSample> messageSamples){
@@ -63,6 +63,10 @@ public class ApplicationProvider {
     public void syncFriends(){
         AsyncSyncFriends asyncSyncFriends=new AsyncSyncFriends(client);
         asyncSyncFriends.execute();
+    }
+    public void checkFolders(){
+        AsyncCheckFolders asyncCheckFolders=new AsyncCheckFolders(client);
+        asyncCheckFolders.execute();
     }
 
 }

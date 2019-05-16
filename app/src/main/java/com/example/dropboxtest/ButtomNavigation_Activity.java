@@ -73,6 +73,7 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentHome()).commit();
         applicationProvider.updateFriends();
         applicationProvider.syncFriends();
+        applicationProvider.checkFolders();
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
