@@ -190,7 +190,15 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
             String currentEmail=client.users().getCurrentAccount().getEmail();
             List<UserMembershipInfo> users=client.sharing().listFolderMembers(folderId).getUsers();
 
-                UserInfo user=users.get(0).getUser();
+               UserInfo user=users.get(0).getUser();
+                //friends to add will be implemented here
+                for(int i=0;i<users.size();i++){
+                    user=users.get(i).getUser();;
+                    if(!user.getEmail().contains(currentEmail)){
+                        break;
+                    }
+
+                }
                 newFriend.setAccountId(user.getAccountId());
                 newFriend.setName(user.getDisplayName());
                 newFriend.seteMail(user.getEmail());
