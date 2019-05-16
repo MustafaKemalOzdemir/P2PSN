@@ -8,17 +8,20 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
-public class Messenger extends AppCompatActivity implements OnItemClickListener{
+public class Messenger extends AppCompatActivity implements OnItemClickListener,SearchView.OnQueryTextListener {
 
 
-
+    ArrayList<Friend> friends;
+    MessengerRVAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +29,18 @@ public class Messenger extends AppCompatActivity implements OnItemClickListener{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ArrayList<Friend> friends=Constants.arrayFriends;
+        friends=Constants.arrayFriends;
 
 
-        MessengerRVAdapter adapter=new MessengerRVAdapter(this,friends,this);
+        adapter=new MessengerRVAdapter(this,friends,this);
         RecyclerView recyclerView=findViewById(R.id.messengerRecycler);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
 
         recyclerView.setLayoutManager(linearLayoutManager);
-
         recyclerView.setAdapter(adapter);
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +56,9 @@ public class Messenger extends AppCompatActivity implements OnItemClickListener{
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_search,menu);
+        MenuItem menuItem=menu.findItem(R.id.searchButton);
+        SearchView searchView=(SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
         return true;
     }
 
@@ -61,5 +69,23 @@ public class Messenger extends AppCompatActivity implements OnItemClickListener{
         intent.putExtra("receiver",clickedItemIndex);
         startActivity(intent);
 
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        String input=s.toLowerCase();
+        ArrayList<Friend> newList=new ArrayList<>();
+        for (Friend friend:friends) {
+            if(friend.getName().toLowerCase().contains(input)){
+                newList.add(friend);
+            }
+        }
+        adapter.updateList(newList);
+        return true;
     }
 }

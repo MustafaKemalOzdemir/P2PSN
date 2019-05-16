@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,7 +8,8 @@ import android.util.Log;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.DownloadErrorException;
-import com.dropbox.core.v2.files.ListFolderErrorException;
+import com.example.dropboxtest.Constants;
+import com.example.dropboxtest.Friend;
 
 import org.json.JSONArray;
 import org.json.JSONException;

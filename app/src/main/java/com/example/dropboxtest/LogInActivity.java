@@ -46,7 +46,6 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(Constants.ACCESS_TOKEN!=""){
-                    //DropboxProvider dropboxProvider=new DropboxProvider(context);
 
                     Intent intent=new Intent(LogInActivity.this,ButtomNavigation_Activity.class);
                     startActivity(intent);

@@ -1,12 +1,13 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.dropbox.core.DbxException;
-import com.dropbox.core.util.IOUtil;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.WriteMode;
+import com.example.dropboxtest.MessageActivity;
+import com.example.dropboxtest.MessageSample;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,19 +15,10 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.StringWriter;
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class AsyncSendMessage extends AsyncTask <Void, String,String> {
     DbxClientV2 client;

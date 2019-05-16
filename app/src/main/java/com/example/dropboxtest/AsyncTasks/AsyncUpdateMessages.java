@@ -1,10 +1,12 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
+import com.example.dropboxtest.MessageActivity;
+import com.example.dropboxtest.MessageSample;
 
 import org.json.JSONArray;
 import org.json.JSONException;

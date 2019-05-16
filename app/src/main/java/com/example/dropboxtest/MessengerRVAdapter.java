@@ -50,6 +50,13 @@ public class MessengerRVAdapter extends RecyclerView.Adapter<MessengerRVViewHold
         Log.v("rvtest",arrayList.size()+"==Size");
         return arrayList.size();
     }
+    public void updateList(ArrayList<Friend> array){
+        arrayList=new ArrayList<>();
+        arrayList.addAll(array);
+        notifyDataSetChanged();
+
+
+    }
 }
 class MessengerRVViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
     TextView name;

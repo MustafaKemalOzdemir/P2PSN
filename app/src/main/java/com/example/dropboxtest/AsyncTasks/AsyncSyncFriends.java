@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -6,11 +6,11 @@ import android.util.Log;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.DownloadErrorException;
-import com.dropbox.core.v2.files.ListFolderResult;
+import com.dropbox.core.v2.files.UploadErrorException;
 import com.dropbox.core.v2.files.WriteMode;
 import com.dropbox.core.v2.sharing.ListFoldersResult;
-import com.dropbox.core.v2.sharing.SharedFileMembers;
 import com.dropbox.core.v2.sharing.SharedFolderMembers;
+import com.example.dropboxtest.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,17 +75,25 @@ public class AsyncSyncFriends extends AsyncTask<Void,Void,Void> {
                             objectFriend.put("Folder-Path",Constants.Friends_Folder_Path+"/"+folderName);
                             jsonFriends.put(objectFriend);
                             client.files().moveV2("/"+folderName,Constants.Friends_Folder_Path+"/"+folderName);
+                            Log.v("syncFriend",sharedFolderMembers.getUsers().get(k).getUser().getEmail());
+
 
                         }
                     }
+                    Log.v("syncFriend",jsonObject.toString());
+                    InputStream in=new ByteArrayInputStream(jsonObject.toString().getBytes());
+                    client.files().uploadBuilder(Constants.Personal_Friends_Folder_path).withMode(WriteMode.OVERWRITE).uploadAndFinish(in);
 
                 }
             }
-            InputStream in=new ByteArrayInputStream(jsonObject.toString().getBytes());
-            client.files().uploadBuilder(Constants.Personal_Friends_Folder_path).withMode(WriteMode.OVERWRITE).uploadAndFinish(in);
+
+
+        } catch (UploadErrorException e) {
+            Log.v("syncFriend",e.getMessage()+"=error");
 
         } catch (DbxException e) {
             e.printStackTrace();
+
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (IOException e) {

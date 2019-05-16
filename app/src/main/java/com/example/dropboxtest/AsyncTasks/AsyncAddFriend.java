@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.AsyncTasks;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,9 +17,8 @@ import com.dropbox.core.v2.sharing.MemberSelector;
 import com.dropbox.core.v2.sharing.ShareFolderErrorException;
 import com.dropbox.core.v2.sharing.UserInfo;
 import com.dropbox.core.v2.sharing.UserMembershipInfo;
-import com.example.dropboxtest.AsyncTasks.AsyncAddFolderMember;
-import com.example.dropboxtest.AsyncTasks.AsyncShareFolder;
-import com.example.dropboxtest.AsyncTasks.AsyncUploadString;
+import com.example.dropboxtest.Constants;
+import com.example.dropboxtest.Friend;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,8 +31,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
 
 public class AsyncAddFriend extends AsyncTask<Void,String,String> {
     private DbxClientV2 client;
