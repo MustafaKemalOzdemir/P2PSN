@@ -1,8 +1,6 @@
 package com.example.dropboxtest;
 
 import android.content.Context;
-import android.util.Log;
-
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
 import com.example.dropboxtest.AsyncTasks.AsyncAddFriend;
@@ -20,7 +18,6 @@ public class ApplicationProvider {
     private DbxRequestConfig config;
     private Context context;
 
-    public static Friend friend=new Friend();
     public ApplicationProvider(Context context){
         this.config = DbxRequestConfig.newBuilder("dropbox").build();
         this.client = new DbxClientV2(config, Constants.ACCESS_TOKEN);

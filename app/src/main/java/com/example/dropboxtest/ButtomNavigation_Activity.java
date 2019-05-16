@@ -67,20 +67,14 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buttom_navigation_);
-        //Toolbar toolbar = findViewById(R.id.my_toolbar);
-        //setSupportActionBar(toolbar);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentHome()).commit();
-        //applicationProvider.checkFolders();
-        applicationProvider.syncFriends();
-        applicationProvider.updateFriends();
-
-
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        //Fragment not created!!!!!
+        applicationProvider.checkFolders();
+        applicationProvider.syncFriends();
+        applicationProvider.updateFriends();
 
 
     }
