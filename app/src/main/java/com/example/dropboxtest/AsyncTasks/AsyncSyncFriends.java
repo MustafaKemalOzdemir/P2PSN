@@ -57,9 +57,13 @@ public class AsyncSyncFriends extends AsyncTask<Void,Void,Void> {
             JSONObject jsonObject=new JSONObject(builderResult.toString());
             JSONArray jsonFriends=jsonObject.getJSONArray("friends");
             ListFoldersResult listFoldersResult=client.sharing().listFolders();
+            Log.v("syncFriend",listFoldersResult.getEntries().toString());
             String email=client.users().getCurrentAccount().getEmail();
             for(int i=0;i<listFoldersResult.getEntries().size();i++){
+                Log.v("syncFriend",listFoldersResult.getEntries().get(i).getName());
                 if(listFoldersResult.getEntries().get(i).getName().contains("_"+email)){
+                    Log.v("syncFriend","girdi");
+
                     int lenght=email.length();
                     String folderName=listFoldersResult.getEntries().get(i).getName();
                     String ownerEmail=folderName.substring(0,folderName.length()-(lenght+1));

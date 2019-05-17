@@ -142,6 +142,7 @@ public class AsyncAddFriend extends AsyncTask<Void,String,String> {
 
 
         try {
+            //can be modified
             String localUserName=client.users().getCurrentAccount().getEmail();
             response=client.sharing().shareFolderBuilder(path+"/"+localUserName+"_"+eMail).start().toString();
             JSONObject jsonObject=new JSONObject(response);

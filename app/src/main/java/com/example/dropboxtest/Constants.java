@@ -13,9 +13,8 @@ public class Constants {
    public static String Friends_Folder_Path="/Apps/P2PSN/Friends";
    public static String Personal_Folder_path="/Apps/P2PSN/Personal";
    public static String Personal_Friends_Folder_path="/Apps/P2PSN/Personal/Friends.txt";
-
+   public static String Group_Folder_path="/Apps/P2PSN/Groups";
    public static String User;
-
    public static ArrayList<Friend> arrayFriends=new ArrayList<>();
 
 
@@ -40,6 +39,16 @@ public class Constants {
       JSONArray jsonArray=new JSONArray();
       try {
          jsonObject.put("friends",jsonArray);
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+      return  jsonObject.toString();
+   }
+   public static String getGroupTemplate(){
+      JSONObject jsonObject=new JSONObject();
+      JSONArray jsonArray=new JSONArray();
+      try {
+         jsonObject.put("posts",jsonArray);
       } catch (JSONException e) {
          e.printStackTrace();
       }
