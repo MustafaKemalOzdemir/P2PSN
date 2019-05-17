@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.dropboxtest.ApplicationProvider;
+import com.example.dropboxtest.Constants;
+import com.example.dropboxtest.Friend;
+import com.example.dropboxtest.MessageAdapter;
+import com.example.dropboxtest.MessageSample;
+import com.example.dropboxtest.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;

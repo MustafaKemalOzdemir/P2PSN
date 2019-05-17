@@ -19,11 +19,9 @@ public class MessengerRVAdapter extends RecyclerView.Adapter<MessengerRVViewHold
     private OnItemClickListener onItemClickListener;
 
 
-    MessengerRVAdapter(Context context,ArrayList<Friend> friends,OnItemClickListener listener){
+    public MessengerRVAdapter(Context context, ArrayList<Friend> friends, OnItemClickListener listener){
         arrayList=friends;
         onItemClickListener=listener;
-       Log.v("rvtest","calledConstruct");
-       Log.v("rvtest",friends.size()+"=size");
 
     }
 
@@ -31,23 +29,20 @@ public class MessengerRVAdapter extends RecyclerView.Adapter<MessengerRVViewHold
     @NonNull
     @Override
     public MessengerRVViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        Log.v("rvtest","oncreate");
         View view=LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.messenger_list_item,viewGroup,false);
         return new MessengerRVViewHolder(view,onItemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MessengerRVViewHolder messengerRVViewHolder, int i) {
-        Log.v("rvtest","called");
+
         String name=arrayList.get(i).getName();
-        Log.v("rvtest",name);
         messengerRVViewHolder.name.setText(name);
 
     }
 
     @Override
     public int getItemCount() {
-        Log.v("rvtest",arrayList.size()+"==Size");
         return arrayList.size();
     }
     public void updateList(ArrayList<Friend> array){
@@ -55,12 +50,11 @@ public class MessengerRVAdapter extends RecyclerView.Adapter<MessengerRVViewHold
         arrayList.addAll(array);
         notifyDataSetChanged();
 
-
     }
 }
 class MessengerRVViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
     TextView name;
-    private OnItemClickListener mListener   ;
+    private OnItemClickListener mListener;
 
     public MessengerRVViewHolder(@NonNull View itemView,OnItemClickListener listener) {
         super(itemView);

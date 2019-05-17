@@ -1,5 +1,6 @@
 package com.example.dropboxtest.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.dropboxtest.ApplicationProvider;
+import com.example.dropboxtest.CreateGroupActivity;
 import com.example.dropboxtest.R;
 
 public class FragmentAddFriend extends Fragment {
@@ -29,6 +31,14 @@ public class FragmentAddFriend extends Fragment {
                 String email=editText.getText().toString();
                 applicationProvider.addFriend2(email);
 
+            }
+        });
+        Button createGroup=v.findViewById(R.id.buttonCreateGroup);
+        createGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(v.getContext(),CreateGroupActivity.class);
+                startActivity(intent);
             }
         });
         return v;

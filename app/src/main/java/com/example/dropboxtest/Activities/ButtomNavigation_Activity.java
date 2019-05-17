@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.Fragments.FragmentAddFriend;
 import com.example.dropboxtest.Fragments.FragmentHome;
 import com.example.dropboxtest.Fragments.FragmentNotifications;
+import com.example.dropboxtest.R;
 
 public class ButtomNavigation_Activity extends AppCompatActivity {
     ApplicationProvider applicationProvider=new ApplicationProvider(this);

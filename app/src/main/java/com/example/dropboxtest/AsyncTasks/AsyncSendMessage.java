@@ -6,7 +6,7 @@ import android.util.Log;
 import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.WriteMode;
-import com.example.dropboxtest.MessageActivity;
+import com.example.dropboxtest.Activities.MessageActivity;
 import com.example.dropboxtest.MessageSample;
 
 import org.json.JSONArray;

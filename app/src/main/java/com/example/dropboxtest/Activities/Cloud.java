@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +12,9 @@ import android.widget.Button;
 
 import com.dropbox.core.android.Auth;
 import com.example.dropboxtest.AsyncTasks.AsyncCreateDirectoryOld;
+import com.example.dropboxtest.CloudDropbox;
+import com.example.dropboxtest.Constants;
+import com.example.dropboxtest.R;
 
 public class Cloud extends AppCompatActivity {
     public Context context =this;
