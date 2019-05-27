@@ -20,11 +20,11 @@
 
     <EditText
         android:id="@+id/sendMessageEditText"
-        android:layout_width="match_parent"
+        android:layout_width="321dp"
         android:layout_height="wrap_content"
-        android:hint="message"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="4dp"
+        android:hint="message"
 
         />
 </RelativeLayout>

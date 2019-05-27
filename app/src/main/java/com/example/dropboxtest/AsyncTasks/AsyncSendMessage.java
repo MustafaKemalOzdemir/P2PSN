@@ -7,7 +7,7 @@ import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.WriteMode;
 import com.example.dropboxtest.Activities.MessageActivity;
-import com.example.dropboxtest.MessageSample;
+import com.example.dropboxtest.Objects.MessageSample;
 
 import org.json.JSONArray;
 import org.json.JSONException;

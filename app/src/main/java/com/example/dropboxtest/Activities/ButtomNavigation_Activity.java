@@ -16,7 +16,7 @@ import com.example.dropboxtest.Fragments.FragmentNotifications;
 import com.example.dropboxtest.R;
 
 public class ButtomNavigation_Activity extends AppCompatActivity {
-    ApplicationProvider applicationProvider=new ApplicationProvider(this);
+    ApplicationProvider applicationProvider = new ApplicationProvider(this);
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,11 +71,12 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_buttom_navigation_);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentHome()).commit();
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         applicationProvider.checkFolders();
         applicationProvider.syncFriends();
+        applicationProvider.syncGroups();
         applicationProvider.updateFriends();
 
 

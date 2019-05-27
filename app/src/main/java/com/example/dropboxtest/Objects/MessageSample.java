@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Objects;
 
 public class MessageSample {
     private String messageText;

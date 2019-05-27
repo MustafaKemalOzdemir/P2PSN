@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.dropboxtest.Constants;
-import com.example.dropboxtest.Friend;
+import com.example.dropboxtest.Objects.Friend;
 import com.example.dropboxtest.MessengerRVAdapter;
 import com.example.dropboxtest.OnItemClickListener;
 import com.example.dropboxtest.R;

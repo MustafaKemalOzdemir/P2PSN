@@ -9,7 +9,7 @@ import com.dropbox.core.DbxException;
 import com.dropbox.core.v2.DbxClientV2;
 import com.dropbox.core.v2.files.DownloadErrorException;
 import com.example.dropboxtest.Constants;
-import com.example.dropboxtest.Friend;
+import com.example.dropboxtest.Objects.Friend;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AsyncUpdateFriends extends AsyncTask<Void,Void,Void> {
     private DbxClientV2 client;

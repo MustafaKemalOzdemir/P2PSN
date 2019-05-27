@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Objects;
 
 public class Friend {
     private String Name;

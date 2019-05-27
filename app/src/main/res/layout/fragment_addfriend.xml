@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Add" />
+        android:text="@string/add" />
 
 
 
@@ -20,15 +20,25 @@
         android:layout_above="@+id/buttonAddFriend"
         android:layout_centerInParent="true"
         android:ems="10"
-        android:hint="E-mail"
+        android:hint="@string/e_mail"
         android:inputType="textEmailAddress" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextCreateGroup"
+        android:layout_centerInParent="true"
+        android:hint="@string/group_name"
+        android:inputType="text"
+        android:ems="10"
+        android:layout_below="@+id/buttonAddFriend"/>
+
 
     <Button
         android:id="@+id/buttonCreateGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAddFriend"
+        android:layout_below="@+id/editTextCreateGroup"
         android:layout_centerInParent="true"
-        android:text="Create Group" />
+        android:text="@string/create_group" />
 
 </RelativeLayout>

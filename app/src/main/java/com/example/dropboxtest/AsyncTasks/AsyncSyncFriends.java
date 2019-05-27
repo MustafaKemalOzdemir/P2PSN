@@ -64,9 +64,9 @@ public class AsyncSyncFriends extends AsyncTask<Void,Void,Void> {
                 if(listFoldersResult.getEntries().get(i).getName().contains("_"+email)){
                     Log.v("syncFriend","girdi");
 
-                    int lenght=email.length();
+                    int length=email.length();
                     String folderName=listFoldersResult.getEntries().get(i).getName();
-                    String ownerEmail=folderName.substring(0,folderName.length()-(lenght+1));
+                    String ownerEmail=folderName.substring(0,folderName.length()-(length+1));
 
                     SharedFolderMembers sharedFolderMembers=client.sharing().listFolderMembers(listFoldersResult.getEntries().get(i).getSharedFolderId());
                     for(int k=0;k<sharedFolderMembers.getUsers().size();k++){

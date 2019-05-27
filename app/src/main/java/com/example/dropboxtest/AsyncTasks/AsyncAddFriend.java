@@ -18,7 +18,7 @@ import com.dropbox.core.v2.sharing.ShareFolderErrorException;
 import com.dropbox.core.v2.sharing.UserInfo;
 import com.dropbox.core.v2.sharing.UserMembershipInfo;
 import com.example.dropboxtest.Constants;
-import com.example.dropboxtest.Friend;
+import com.example.dropboxtest.Objects.Friend;
 
 import org.json.JSONArray;
 import org.json.JSONException;

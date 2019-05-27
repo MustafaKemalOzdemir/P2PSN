@@ -1,14 +1,19 @@
 package com.example.dropboxtest;
 
+import android.app.Activity;
 import android.content.Context;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
 import com.example.dropboxtest.AsyncTasks.AsyncAddFriend;
 import com.example.dropboxtest.AsyncTasks.AsyncCheckFolders;
+import com.example.dropboxtest.AsyncTasks.AsyncCreateGroup;
 import com.example.dropboxtest.AsyncTasks.AsyncSendMessage;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncFriends;
+import com.example.dropboxtest.AsyncTasks.AsyncSyncGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateMessages;
+import com.example.dropboxtest.Objects.Friend;
+import com.example.dropboxtest.Objects.MessageSample;
 
 import java.util.ArrayList;
 
@@ -17,11 +22,20 @@ public class ApplicationProvider {
     private DbxClientV2 client;
     private DbxRequestConfig config;
     private Context context;
+    private Activity activity;
 
     public ApplicationProvider(Context context){
         this.config = DbxRequestConfig.newBuilder("dropbox").build();
         this.client = new DbxClientV2(config, Constants.ACCESS_TOKEN);
         this.context=context;
+
+    }
+    public ApplicationProvider(Activity activity,Context context){
+        this.config = DbxRequestConfig.newBuilder("dropbox").build();
+        this.client = new DbxClientV2(config, Constants.ACCESS_TOKEN);
+        this.activity=activity;
+        this.context=context;
+
 
     }
 
@@ -50,6 +64,14 @@ public class ApplicationProvider {
     public void checkFolders(){
         AsyncCheckFolders asyncCheckFolders=new AsyncCheckFolders(client);
         asyncCheckFolders.execute();
+    }
+    public void createGroup(String name,ArrayList<Friend> arrayFriends){
+        AsyncCreateGroup asyncCreateGroup=new AsyncCreateGroup(client,activity,context,name,arrayFriends);
+        asyncCreateGroup.execute();
+    }
+    public void syncGroups(){
+        AsyncSyncGroups asyncSyncGroups=new AsyncSyncGroups(client);
+        asyncSyncGroups.execute();
     }
 
 }

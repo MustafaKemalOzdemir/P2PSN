@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,9 +13,9 @@ import android.widget.EditText;
 
 import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.Constants;
-import com.example.dropboxtest.Friend;
+import com.example.dropboxtest.Objects.Friend;
 import com.example.dropboxtest.MessageAdapter;
-import com.example.dropboxtest.MessageSample;
+import com.example.dropboxtest.Objects.MessageSample;
 import com.example.dropboxtest.R;
 
 import java.util.ArrayList;
@@ -65,27 +64,21 @@ public class MessageActivity extends AppCompatActivity {
         applicationProvider.updateMessages(friend.getFolderPath()+"/messages.txt",messageSampleArrayList);
 
 
-
-
-
-
         recyclerView=findViewById(R.id.messageRecycler);
         messageAdapter=new MessageAdapter(messageSampleArrayList);
         recyclerView.setAdapter(messageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
 
         FloatingActionButton sendButton = findViewById(R.id.fab);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String message=editText.getText().toString();
-                String time=Calendar.getInstance().getTime().getTime()+"";
-                applicationProvider.sendMessage(friend.getFolderPath()+"/messages.txt",message,Constants.User,time,messageSampleArrayList);
-
-                editText.getText().clear();
-
+                if(!message.equals("")){
+                    String time=Calendar.getInstance().getTime().getTime()+"";
+                    applicationProvider.sendMessage(friend.getFolderPath()+"/messages.txt",message,Constants.User,time,messageSampleArrayList);
+                    editText.getText().clear();
+                }
             }
         });
     }

@@ -1,5 +1,6 @@
 package com.example.dropboxtest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,12 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.dropboxtest.Objects.Friend;
+
 import java.util.ArrayList;
 
 public class CreateGroupActivity extends AppCompatActivity implements OnItemClickListener,SearchView.OnQueryTextListener {
     ArrayList<Friend> friendArrayList=Constants.arrayFriends;
     CreateGroupAdapter createGroupAdapter;
     ArrayList<Friend> clickedFriends=new ArrayList<>();
+    ApplicationProvider applicationProvider=new ApplicationProvider(this,this);
+    String groupName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,9 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(createGroupAdapter);
+        Intent intent=getIntent();
+        groupName=intent.getExtras().getString("groupName","null");
+
 
 
 
@@ -40,8 +48,10 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, clickedFriends.size()+"", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                applicationProvider.createGroup(groupName,clickedFriends);
+                Log.v("ClickedFriends",clickedFriends.toString());
+                //Snackbar.make(view, clickedFriends.size()+"", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
             }
         });
     }
