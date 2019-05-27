@@ -38,7 +38,7 @@ public class AsyncSyncGroups extends AsyncTask<Void,Void,Void> {
             }
 
             JSONObject jsonObject=new JSONObject(builderResult.toString());
-            JSONArray jsonArray=jsonObject.getJSONArray();
+            JSONArray jsonArray=jsonObject.getJSONArray("groups");
             ListFoldersResult listFoldersResult=client.sharing().listFolders();
             for(int i=0;i<listFoldersResult.getEntries().size();i++){
                 if(listFoldersResult.getEntries().get(i).getName().contains("@P2PSN")){
