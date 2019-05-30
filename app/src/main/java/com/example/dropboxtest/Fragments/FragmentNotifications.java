@@ -19,7 +19,7 @@ public class FragmentNotifications extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_notifications, container, false);
-
+        getActivity().setTitle("Notifications");
 
         final ApplicationProvider applicationProvider=new ApplicationProvider(v.getContext());
 

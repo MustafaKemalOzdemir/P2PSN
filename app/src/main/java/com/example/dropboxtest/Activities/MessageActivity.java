@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.Constants;
@@ -69,7 +70,7 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView.setAdapter(messageAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FloatingActionButton sendButton = findViewById(R.id.fab);
+        ImageButton sendButton = findViewById(R.id.button_msgsend);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

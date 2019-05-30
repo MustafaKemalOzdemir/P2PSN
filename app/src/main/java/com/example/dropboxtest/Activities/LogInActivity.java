@@ -37,13 +37,8 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-
-
-
-        Button LogIn=findViewById(R.id.button_login);
+        Button LogIn=findViewById(R.id.LoginbtnHome);
         LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,21 +52,12 @@ public class LogInActivity extends AppCompatActivity {
             }
         });
 
-        Button SignIn=(Button)findViewById(R.id.button_signin);
+        Button SignIn=(Button)findViewById(R.id.SingUpbtnHome);
         SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LogInActivity.this,Cloud.class);
                 startActivity(intent);
-            }
-        });
-
-         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // Intent intent=new Intent(LogInActivity.this, AddData.class);
-                //startActivity(intent);
             }
         });
     }

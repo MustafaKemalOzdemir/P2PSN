@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.dropbox.core.android.Auth;
 import com.example.dropboxtest.AsyncTasks.AsyncCreateDirectoryOld;
@@ -32,23 +34,13 @@ public class Cloud extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button dropbox=(Button)findViewById(R.id.button_selectdropbox);
+        RelativeLayout dropbox=findViewById(R.id.dropbox_button);
         dropbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DropboxSelected=true;
                 CloudDropbox cloudDropbox=new CloudDropbox(context);
                 cloudDropbox.DropboxAuthentication();
-            }
-        });
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SharedPreferences sharedPreferences=getPreferences(MODE_PRIVATE);
-                String getToken=sharedPreferences.getString("DropBox_token","");
-                Log.v("DTest","GelenToken"+getToken);
             }
         });
     }

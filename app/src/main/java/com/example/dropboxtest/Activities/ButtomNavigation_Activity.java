@@ -13,6 +13,7 @@ import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.Fragments.FragmentAddFriend;
 import com.example.dropboxtest.Fragments.FragmentHome;
 import com.example.dropboxtest.Fragments.FragmentNotifications;
+import com.example.dropboxtest.Fragments.FragmentProfile;
 import com.example.dropboxtest.R;
 
 public class ButtomNavigation_Activity extends AppCompatActivity {
@@ -36,7 +37,8 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     SelectedFragment=new FragmentNotifications();
                     break;
-
+                case R.id.navigation_profile:
+                    SelectedFragment=new FragmentProfile();
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,SelectedFragment).commit();
             return true;
@@ -61,6 +63,10 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
 
             return true;
         }
+        if(id== R.id.refresh){
+            //update post !!!!!!
+            //applicationProvider.updatePosts;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -78,6 +84,7 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         applicationProvider.syncFriends();
         applicationProvider.syncGroups();
         applicationProvider.updateFriends();
+        applicationProvider.updateGroups();
 
 
     }

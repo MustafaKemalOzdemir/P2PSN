@@ -21,6 +21,7 @@ public class FragmentAddFriend extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_addfriend, container, false);
+        getActivity().setTitle("Friend");
 
         final ApplicationProvider applicationProvider=new ApplicationProvider(v.getContext());
         final EditText editText=v.findViewById(R.id.editTextAddFriend);

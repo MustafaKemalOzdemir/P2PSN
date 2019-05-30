@@ -22,7 +22,6 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
     ArrayList<Friend> friendArrayList=Constants.arrayFriends;
     CreateGroupAdapter createGroupAdapter;
     ArrayList<Friend> clickedFriends=new ArrayList<>();
-    ApplicationProvider applicationProvider=new ApplicationProvider(this,this);
     String groupName;
 
     @Override
@@ -41,19 +40,6 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
         Intent intent=getIntent();
         groupName=intent.getExtras().getString("groupName","null");
 
-
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                applicationProvider.createGroup(groupName,clickedFriends);
-                Log.v("ClickedFriends",clickedFriends.toString());
-                //Snackbar.make(view, clickedFriends.size()+"", Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override

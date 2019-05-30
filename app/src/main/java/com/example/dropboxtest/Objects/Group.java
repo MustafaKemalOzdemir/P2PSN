@@ -1,9 +1,12 @@
 package com.example.dropboxtest.Objects;
 
+import java.util.ArrayList;
+
 public class Group {
     private String groupName;
     private String folderId;
     private String folderPath;
+    public ArrayList<Post> posts=new ArrayList<>();
 
     public String getFolderPath() {
         return folderPath;

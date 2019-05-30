@@ -11,6 +11,7 @@ import com.example.dropboxtest.AsyncTasks.AsyncSendMessage;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateFriends;
+import com.example.dropboxtest.AsyncTasks.AsyncUpdateGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateMessages;
 import com.example.dropboxtest.Objects.Friend;
 import com.example.dropboxtest.Objects.MessageSample;
@@ -72,6 +73,10 @@ public class ApplicationProvider {
     public void syncGroups(){
         AsyncSyncGroups asyncSyncGroups=new AsyncSyncGroups(client);
         asyncSyncGroups.execute();
+    }
+    public void updateGroups(){
+        AsyncUpdateGroups asyncUpdateGroups=new AsyncUpdateGroups(client);
+        asyncUpdateGroups.execute();
     }
 
 }

@@ -10,7 +10,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="5sp"
-        app:cardBackgroundColor="#81d4fa"
+        app:cardBackgroundColor="#9DAEB8"
         app:cardCornerRadius="20sp">
 
         <LinearLayout
@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
                 android:text="TextView" />
 
             <TextView
@@ -31,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -41,6 +43,7 @@
 
                 <TextView
                     android:id="@+id/txtTimeLeft"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
