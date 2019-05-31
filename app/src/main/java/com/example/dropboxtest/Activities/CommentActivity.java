@@ -33,6 +33,7 @@ public class CommentActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         ArrayList<String> name;
         ArrayList<String> comments;
+
         Post post = new Post();
 
         if (extras != null) {
@@ -57,13 +58,17 @@ public class CommentActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             ImageButton imageButton = findViewById(R.id.commentAddButton);
             final EditText editText = findViewById(R.id.commentEditText);
+            applicationProvider.updateComments(dummyPost.getId(),dummyPost.getPostPath(),currentComments);
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String text = editText.getText().toString();
-                    editText.setText("");
-                    applicationProvider.addComment(text, dummyPost);
-                    applicationProvider.updateComments(dummyPost.getId(),dummyPost.getPostPath(),currentComments);
+                    if(!text.equals("")){
+                        editText.setText("");
+                        applicationProvider.addComment(text, dummyPost);
+                        applicationProvider.updateComments(dummyPost.getId(),dummyPost.getPostPath(),currentComments);
+                    }
+
 
                 }
             });

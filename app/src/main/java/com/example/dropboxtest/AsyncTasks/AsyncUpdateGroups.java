@@ -59,7 +59,7 @@ public class AsyncUpdateGroups extends AsyncTask<Void, Void,Void> {
             for(int i=0;i<groupList.length();i++){
                 group=new Group();
                 groupElement=groupList.getJSONObject(i);
-                group.setFolderId(groupElement.getString("folderId"));
+               // group.setFolderId(groupElement.getString("folderId"));
                 group.setFolderPath(groupElement.getString("groupPath"));
                 group.setGroupName(groupElement.getString("groupName"));
                 mGroupList.add(group);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Group {
     private String groupName;
-    private String folderId;
+    //private String folderId;
     private String folderPath;
     public ArrayList<Post> posts=new ArrayList<>();
 
@@ -16,13 +16,13 @@ public class Group {
         this.folderPath = folderPath;
     }
 
-    public String getFolderId() {
-        return folderId;
-    }
+    //public String getFolderId() {
+    //    return folderId;
+    //}
 
-    public void setFolderId(String folderId) {
-        this.folderId = folderId;
-    }
+    //public void setFolderId(String folderId) {
+    //    this.folderId = folderId;
+    //}
 
     public String getGroupName() {
         return groupName;

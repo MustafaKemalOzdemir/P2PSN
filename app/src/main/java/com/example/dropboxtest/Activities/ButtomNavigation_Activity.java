@@ -92,10 +92,16 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
         applicationProvider.checkFolders();
         applicationProvider.syncFriends();
         applicationProvider.syncGroups();
-        applicationProvider.updateFriends();
         applicationProvider.updateGroups();
+        applicationProvider.updateFriends();
 
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        applicationProvider.syncFriends();
+        applicationProvider.syncGroups();
+    }
 }

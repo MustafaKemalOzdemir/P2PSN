@@ -9,6 +9,7 @@ import com.example.dropboxtest.AsyncTasks.AsyncAddFriend;
 import com.example.dropboxtest.AsyncTasks.AsyncCheckFolders;
 import com.example.dropboxtest.AsyncTasks.AsyncCreateGroup;
 import com.example.dropboxtest.AsyncTasks.AsyncSendMessage;
+import com.example.dropboxtest.AsyncTasks.AsyncSharePost;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateComments;

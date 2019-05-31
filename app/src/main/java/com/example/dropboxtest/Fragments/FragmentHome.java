@@ -63,7 +63,9 @@ public class FragmentHome extends Fragment implements OnItemClickListener {
         RecyclerView recyclerView=v.findViewById(R.id.recyhome);
         homeAdapter=new HomeAdapter(ButtomNavigation_Activity.posts,getActivity(),this);
         recyclerView.setAdapter(homeAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(v.getContext());
+        linearLayoutManager.setReverseLayout(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
         return v;
     }
     public static void notifyAdapter(){

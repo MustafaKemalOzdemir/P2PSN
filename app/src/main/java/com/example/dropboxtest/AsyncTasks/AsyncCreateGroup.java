@@ -112,7 +112,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
             ShareFolderLaunch shareFolderLaunch=client.sharing().shareFolderBuilder(groupPath).start();
             SharedFolderMetadata sharedFolderMetadata=shareFolderLaunch.getCompleteValue();
             folderId=sharedFolderMetadata.getSharedFolderId();
-            group.setFolderId(folderId);
+            //group.setFolderId(folderId);
             group.setFolderPath(groupPath);
             group.setGroupName(groupName);
 
@@ -123,7 +123,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
             
 
             //add folder members to group
-            Log.v("CreateGroup",group.getFolderId()+" - "+group.getFolderPath() );
+            //Log.v("CreateGroup",group.getFolderId()+" - "+group.getFolderPath() );
             List<AddMember> members=new ArrayList<>();
             for(int i=0;i<friendArrayList.size();i++){
                 AddMember member= new AddMember(MemberSelector.email(friendArrayList.get(i).geteMail()),AccessLevel.EDITOR);
@@ -144,7 +144,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
             JSONObject newGroup=new JSONObject();
             newGroup.put("groupName", group.getGroupName());
             newGroup.put("groupPath", group.getFolderPath());
-            newGroup.put("folderId",group.getFolderId());
+            //newGroup.put("folderId",group.getFolderId());
             jsonArray.put(newGroup);
 
 
@@ -156,7 +156,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
                 object=jsonArray.getJSONObject(i);
                 group.setGroupName(object.getString("groupName"));
                 group.setFolderPath(object.getString("groupPath"));
-                group.setFolderId(object.getString("folderId"));
+               // group.setFolderId(object.getString("folderId"));
                 Constants.arrayGropus.add(group);
 
             }

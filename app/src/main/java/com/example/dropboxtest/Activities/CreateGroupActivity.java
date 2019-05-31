@@ -1,4 +1,4 @@
-package com.example.dropboxtest;
+package com.example.dropboxtest.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.dropboxtest.ApplicationProvider;
+import com.example.dropboxtest.Constants;
+import com.example.dropboxtest.CreateGroupAdapter;
 import com.example.dropboxtest.Objects.Friend;
+import com.example.dropboxtest.OnItemClickListener;
+import com.example.dropboxtest.R;
 
 import java.util.ArrayList;
 
