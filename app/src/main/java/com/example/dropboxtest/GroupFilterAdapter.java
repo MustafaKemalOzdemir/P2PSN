@@ -2,6 +2,7 @@ package com.example.dropboxtest;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,9 +68,11 @@ public class GroupFilterAdapter extends RecyclerView.Adapter<GroupFilterAdapter.
             if(checkBox.isChecked()){
                 checkBox.setChecked(false);
                 clickedGroups.remove(groups.get(getAdapterPosition()));
+                Log.v("SharePost","Deleted");
             }else{
                 checkBox.setChecked(true);
                 clickedGroups.add(groups.get(getAdapterPosition()));
+                Log.v("SharePost","Added");
 
             }
             int clickedPosition = getAdapterPosition();

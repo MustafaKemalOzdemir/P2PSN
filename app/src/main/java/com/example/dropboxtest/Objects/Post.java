@@ -7,6 +7,8 @@ public class Post {
     private String postContext;
     private String postPublisher;
     private int numberOfComments;
+    private String time;
+    private String type;
     private ArrayList<String> comments=new ArrayList<>();
 
     public String getId() {
@@ -47,5 +49,24 @@ public class Post {
 
     public void setComments(ArrayList<String> comments) {
         this.comments = comments;
+    }
+    public void addElement(String s){
+        comments.add(s);
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
+import com.example.dropboxtest.ApplicationProvider;
 import com.example.dropboxtest.Constants;
 import com.example.dropboxtest.GroupFilterAdapter;
 import com.example.dropboxtest.Objects.Friend;
@@ -26,6 +28,7 @@ public class GroupFilter extends AppCompatActivity implements OnItemClickListene
     ArrayList<Group> groups=Constants.arrayGropus;
     ArrayList<Group> clickedGroups=new ArrayList<>();
     GroupFilterAdapter groupFilterAdapter;
+    ApplicationProvider applicationProvider=new ApplicationProvider(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +42,31 @@ public class GroupFilter extends AppCompatActivity implements OnItemClickListene
         groupFilterAdapter=new GroupFilterAdapter(groups,clickedGroups,this);
         recyclerView.setAdapter(groupFilterAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Button button=findViewById(R.id.buttonOkayGroupFilter);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle extras=getIntent().getExtras();
+                if(extras!=null){
+                    String mode= extras.getString("WhereFrom","dunno");
+                    if(mode.equals("share post")){
+                        String postContext=extras.getString("postContext");
+                        applicationProvider.sharePost(clickedGroups,postContext,"1");
+
+                    } else if(mode.equals("filter posts")){
+                        ButtomNavigation_Activity.selectedGroups=clickedGroups;
+
+                    }
+                }
+
+            }
+        });
 
     }
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
+        Log.v("SharePost","clickedItemsize"+clickedGroups.size());
 
     }
     @Override

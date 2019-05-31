@@ -14,10 +14,16 @@ import com.example.dropboxtest.Fragments.FragmentAddFriend;
 import com.example.dropboxtest.Fragments.FragmentHome;
 import com.example.dropboxtest.Fragments.FragmentNotifications;
 import com.example.dropboxtest.Fragments.FragmentProfile;
+import com.example.dropboxtest.Objects.Group;
+import com.example.dropboxtest.Objects.Post;
 import com.example.dropboxtest.R;
+
+import java.util.ArrayList;
 
 public class ButtomNavigation_Activity extends AppCompatActivity {
     ApplicationProvider applicationProvider = new ApplicationProvider(this);
+    public static ArrayList<Post> posts=new ArrayList<>();
+    static ArrayList<Group> selectedGroups=new ArrayList<>();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,6 +70,7 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
             return true;
         }
         if(id== R.id.refresh){
+            applicationProvider.updatePosts(selectedGroups,posts);
             //update post !!!!!!
             //applicationProvider.updatePosts;
         }

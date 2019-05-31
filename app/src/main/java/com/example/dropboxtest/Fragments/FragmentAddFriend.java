@@ -41,7 +41,7 @@ public class FragmentAddFriend extends Fragment {
             public void onClick(View v) {
                 if(!createGroupEditText.getText().equals("")){
                     Intent intent=new Intent(v.getContext(),CreateGroupActivity.class);
-                    intent.putExtra("groupName",editText.getText().toString());
+                    intent.putExtra("groupName",createGroupEditText.getText().toString());
                     startActivity(intent);
                 }
 

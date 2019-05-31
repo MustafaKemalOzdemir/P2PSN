@@ -60,8 +60,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }else {
             return 2;
         }
-
-
     }
 
     @NonNull

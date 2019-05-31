@@ -13,8 +13,11 @@ import com.example.dropboxtest.AsyncTasks.AsyncSyncGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateMessages;
+import com.example.dropboxtest.AsyncTasks.AsyncUpdatePosts;
 import com.example.dropboxtest.Objects.Friend;
+import com.example.dropboxtest.Objects.Group;
 import com.example.dropboxtest.Objects.MessageSample;
+import com.example.dropboxtest.Objects.Post;
 
 import java.util.ArrayList;
 
@@ -77,6 +80,14 @@ public class ApplicationProvider {
     public void updateGroups(){
         AsyncUpdateGroups asyncUpdateGroups=new AsyncUpdateGroups(client);
         asyncUpdateGroups.execute();
+    }
+    public void sharePost(ArrayList<Group> groups,String postContext,String type){
+        AsyncSharePost asyncSharePost=new AsyncSharePost(client,groups,postContext,context,type);
+        asyncSharePost.execute();
+    }
+    public void updatePosts(ArrayList<Group> groups,ArrayList<Post> postArrayList){
+        AsyncUpdatePosts asyncUpdatePosts=new AsyncUpdatePosts(client,groups,postArrayList);
+        asyncUpdatePosts.execute();
     }
 
 }

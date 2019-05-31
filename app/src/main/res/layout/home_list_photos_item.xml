@@ -12,7 +12,7 @@
         android:background="@drawable/wall_background">
 
         <RelativeLayout
-            android:id="@+id/title_area"
+            android:id="@+id/title_areaStyle2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -22,14 +22,14 @@
             android:padding="5dp">
 
             <ImageView
-                android:id="@+id/image"
+                android:id="@+id/imageStyle2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="6dip"
                 android:src="@drawable/ic_user"/>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/nameStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/image"
@@ -39,7 +39,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/dateStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -50,7 +50,7 @@
                 android:singleLine="true"
                 android:textSize="12sp"/>
             <TextView
-                android:id="@+id/status"
+                android:id="@+id/statusStyle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/image"
@@ -73,7 +73,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/content_area"
+            android:id="@+id/content_areaStyle2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -81,7 +81,7 @@
             android:padding="5dp">
 
             <com.example.dropboxtest.Objects.SquareImageView
-                android:id="@+id/photo"
+                android:id="@+id/photoStyle2"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"

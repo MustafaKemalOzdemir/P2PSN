@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.dropboxtest.Objects.Friend;
 
@@ -22,6 +23,7 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
     ArrayList<Friend> friendArrayList=Constants.arrayFriends;
     CreateGroupAdapter createGroupAdapter;
     ArrayList<Friend> clickedFriends=new ArrayList<>();
+    ApplicationProvider applicationProvider=new ApplicationProvider(this,this);
     String groupName;
 
     @Override
@@ -39,6 +41,13 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
         recyclerView.setAdapter(createGroupAdapter);
         Intent intent=getIntent();
         groupName=intent.getExtras().getString("groupName","null");
+        Button accept=findViewById(R.id.buttonCreateGroup);
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                applicationProvider.createGroup(groupName,clickedFriends);
+            }
+        });
 
     }
 

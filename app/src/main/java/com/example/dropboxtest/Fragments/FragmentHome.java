@@ -6,16 +6,21 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.dropboxtest.Activities.ButtomNavigation_Activity;
 import com.example.dropboxtest.Activities.GroupFilter;
+import com.example.dropboxtest.HomeAdapter;
 import com.example.dropboxtest.R;
 
 public class FragmentHome extends Fragment {
     private LinearLayout photos, camera;
+    public static  HomeAdapter homeAdapter;
     LinearLayout linearLayout;
     @Nullable
     @Override
@@ -47,11 +52,19 @@ public class FragmentHome extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(v.getContext(),GroupFilter.class);
+                intent.putExtra("WhereFrom","filter posts");
                 startActivity(intent);
 
             }
         });
+        RecyclerView recyclerView=v.findViewById(R.id.recyhome);
+        homeAdapter=new HomeAdapter(ButtomNavigation_Activity.posts);
+        recyclerView.setAdapter(homeAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         return v;
+    }
+    public static void notifyAdapter(){
+        homeAdapter.notifyDataSetChanged();
     }
 }
 

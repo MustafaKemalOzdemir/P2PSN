@@ -73,5 +73,6 @@ public class AsyncUpdateMessages extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         MessageActivity.notifyAdapter();
+
     }
 }
