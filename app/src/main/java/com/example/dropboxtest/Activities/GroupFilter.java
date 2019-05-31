@@ -47,14 +47,20 @@ public class GroupFilter extends AppCompatActivity implements OnItemClickListene
             @Override
             public void onClick(View v) {
                 Bundle extras=getIntent().getExtras();
+                Log.v("refreshPosts","Filter On Create");
                 if(extras!=null){
+                    Log.v("refreshPosts","Extra True");
                     String mode= extras.getString("WhereFrom","dunno");
                     if(mode.equals("share post")){
+                        Log.v("refreshPosts","Share Post");
                         String postContext=extras.getString("postContext");
                         applicationProvider.sharePost(clickedGroups,postContext,"1");
 
                     } else if(mode.equals("filter posts")){
+                        Log.v("refreshPosts","Filter Post");
+                        Log.v("refreshPosts",clickedGroups.size()+" =Clicked groups Size at filter");
                         ButtomNavigation_Activity.selectedGroups=clickedGroups;
+                        finish();
 
                     }
                 }

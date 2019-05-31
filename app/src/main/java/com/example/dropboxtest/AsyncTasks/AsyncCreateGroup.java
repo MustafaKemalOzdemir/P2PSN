@@ -70,6 +70,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
     protected Void doInBackground(Void... voids) {
         boolean groupFileIsExist=true;
         String groupTxt="";
+        Log.v("CreateGroup",friendArrayList.size()+" =Size");
 
         try {
             InputStream in;
@@ -122,6 +123,7 @@ public class AsyncCreateGroup extends AsyncTask<Void,Void,Void> {
             
 
             //add folder members to group
+            Log.v("CreateGroup",group.getFolderId()+" - "+group.getFolderPath() );
             List<AddMember> members=new ArrayList<>();
             for(int i=0;i<friendArrayList.size();i++){
                 AddMember member= new AddMember(MemberSelector.email(friendArrayList.get(i).geteMail()),AccessLevel.EDITOR);

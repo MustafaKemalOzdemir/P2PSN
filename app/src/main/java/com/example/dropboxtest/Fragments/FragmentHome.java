@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,10 @@ import android.widget.LinearLayout;
 import com.example.dropboxtest.Activities.ButtomNavigation_Activity;
 import com.example.dropboxtest.Activities.GroupFilter;
 import com.example.dropboxtest.HomeAdapter;
+import com.example.dropboxtest.OnItemClickListener;
 import com.example.dropboxtest.R;
 
-public class FragmentHome extends Fragment {
+public class FragmentHome extends Fragment implements OnItemClickListener {
     private LinearLayout photos, camera;
     public static  HomeAdapter homeAdapter;
     LinearLayout linearLayout;
@@ -30,6 +32,7 @@ public class FragmentHome extends Fragment {
         photos = (LinearLayout) v.findViewById(R.id.btnphotos);
         camera = (LinearLayout) v.findViewById(R.id.btncamera);
         linearLayout = (LinearLayout) v.findViewById(R.id.lin1);
+
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,13 +61,20 @@ public class FragmentHome extends Fragment {
             }
         });
         RecyclerView recyclerView=v.findViewById(R.id.recyhome);
-        homeAdapter=new HomeAdapter(ButtomNavigation_Activity.posts);
+        homeAdapter=new HomeAdapter(ButtomNavigation_Activity.posts,getActivity(),this);
         recyclerView.setAdapter(homeAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(v.getContext()));
         return v;
     }
     public static void notifyAdapter(){
         homeAdapter.notifyDataSetChanged();
+        Log.v("refreshPosts",ButtomNavigation_Activity.posts.size()+" =adapterPostSize");
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex) {
+        Log.v("CommentSection",clickedItemIndex+"");
+
     }
 }
 

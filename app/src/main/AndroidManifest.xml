@@ -73,7 +73,7 @@
             android:label="@string/title_activity_group_filter"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.comment"
+            android:name=".Activities.CommentActivity"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

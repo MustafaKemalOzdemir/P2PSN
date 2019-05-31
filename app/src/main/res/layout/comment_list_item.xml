@@ -13,11 +13,12 @@
         android:layout_margin="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/commentUseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -27,11 +28,12 @@
         app:layout_constraintTop_toTopOf="@+id/circleImageView" />
 
     <TextView
+        android:id="@+id/commentCommentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Comment"
         android:padding="2dp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/commentUseName"
+        app:layout_constraintTop_toBottomOf="@+id/commentUseName" />
 </android.support.constraint.ConstraintLayout>

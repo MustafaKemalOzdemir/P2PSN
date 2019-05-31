@@ -83,6 +83,7 @@ public class CreateGroupActivity extends AppCompatActivity implements OnItemClic
     @Override
     public void onListItemClick(int clickedItemIndex) {
         Log.v("createGroup","clicked "+clickedItemIndex);
+        Log.v("createGroup",clickedFriends.size()+"=clicked friends");
 
     }
 }

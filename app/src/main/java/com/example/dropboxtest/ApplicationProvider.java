@@ -4,16 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import com.dropbox.core.DbxRequestConfig;
 import com.dropbox.core.v2.DbxClientV2;
+import com.example.dropboxtest.AsyncTasks.AsyncAddComment;
 import com.example.dropboxtest.AsyncTasks.AsyncAddFriend;
 import com.example.dropboxtest.AsyncTasks.AsyncCheckFolders;
 import com.example.dropboxtest.AsyncTasks.AsyncCreateGroup;
 import com.example.dropboxtest.AsyncTasks.AsyncSendMessage;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncSyncGroups;
+import com.example.dropboxtest.AsyncTasks.AsyncUpdateComments;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateFriends;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateGroups;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdateMessages;
 import com.example.dropboxtest.AsyncTasks.AsyncUpdatePosts;
+import com.example.dropboxtest.Objects.Comment;
 import com.example.dropboxtest.Objects.Friend;
 import com.example.dropboxtest.Objects.Group;
 import com.example.dropboxtest.Objects.MessageSample;
@@ -88,6 +91,15 @@ public class ApplicationProvider {
     public void updatePosts(ArrayList<Group> groups,ArrayList<Post> postArrayList){
         AsyncUpdatePosts asyncUpdatePosts=new AsyncUpdatePosts(client,groups,postArrayList);
         asyncUpdatePosts.execute();
+    }
+    public void addComment(String commentText,Post post){
+        AsyncAddComment asyncAddComment=new AsyncAddComment(client,commentText,post);
+        asyncAddComment.execute();
+
+    }
+    public void updateComments(String id, String path, ArrayList<Comment> currentComments){
+        AsyncUpdateComments asyncUpdateComments=new AsyncUpdateComments(client,id,path,currentComments);
+        asyncUpdateComments.execute();
     }
 
 }

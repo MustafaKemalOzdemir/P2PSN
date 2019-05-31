@@ -81,18 +81,19 @@
             android:layout_below="@id/content_area"
             android:background="@drawable/wall_post_background" >
 
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                layout="@layout/button_comment"
-                android:background="@android:drawable/list_selector_background"
-                android:clickable="true" />
-
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="#a1a1a1" />
+
+            <include
+                android:id="@+id/buttonStatusComment"
+                layout="@layout/button_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:drawable/list_selector_background"
+                android:clickable="true" />
 
             <include
                 android:layout_width="match_parent"

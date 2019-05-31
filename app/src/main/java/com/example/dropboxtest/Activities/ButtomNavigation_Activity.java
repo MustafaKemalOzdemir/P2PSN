@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -70,6 +71,7 @@ public class ButtomNavigation_Activity extends AppCompatActivity {
             return true;
         }
         if(id== R.id.refresh){
+            Log.v("refreshPosts",selectedGroups.size()+" =Selected Groups Size");
             applicationProvider.updatePosts(selectedGroups,posts);
             //update post !!!!!!
             //applicationProvider.updatePosts;

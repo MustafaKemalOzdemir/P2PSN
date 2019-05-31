@@ -93,6 +93,7 @@ public class AsyncSharePost extends AsyncTask<Void,Void,Void> {
                 post.put("comments",comments);
                 post.put("time",Calendar.getInstance().getTime().getTime()+"");
                 post.put("type",type);
+                post.put("post-path",groups.get(i).getFolderPath()+"/Group.txt");
                 jsonArray.put(post);
 
                 InputStream input=new ByteArrayInputStream(groupObject.toString().getBytes());

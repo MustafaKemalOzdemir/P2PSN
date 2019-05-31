@@ -9,7 +9,8 @@ public class Post {
     private int numberOfComments;
     private String time;
     private String type;
-    private ArrayList<String> comments=new ArrayList<>();
+    private ArrayList<Comment> comments=new ArrayList<>();
+    private String postPath;
 
     public String getId() {
         return id;
@@ -42,16 +43,11 @@ public class Post {
     public void setNumberOfComments(int numberOfComments) {
         this.numberOfComments = numberOfComments;
     }
-
-    public ArrayList<String> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<String> comments) {
-        this.comments = comments;
-    }
-    public void addElement(String s){
-        comments.add(s);
+    public void addElement(String name,String commentText){
+        Comment comment=new Comment();
+        comment.setName(name);
+        comment.setCommentText(commentText);
+        comments.add(comment);
     }
 
     public String getTime() {
@@ -68,5 +64,16 @@ public class Post {
 
     public void setType(String type) {
         this.type = type;
+    }
+    public ArrayList<Comment> getComments(){
+        return comments;
+    }
+
+    public String getPostPath() {
+        return postPath;
+    }
+
+    public void setPostPath(String postPath) {
+        this.postPath = postPath;
     }
 }
